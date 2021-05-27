@@ -60,5 +60,4 @@ Rails.application.routes.draw do
 
   get "/about/author" => 'public#author'
 
-  
 end
