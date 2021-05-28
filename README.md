@@ -1,9 +1,8 @@
 # test_guru
-#Login system
-#Tests categories
+#categories
 #Tests
 #Questions
-#Possible Answers
+#Answers
 #Right Answers
-#User Answers
+#User
 #Result
