@@ -53,12 +53,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root "articles#index"
-  get "/articles", to: "articles#index"
 
-  get "/about" => 'public#about'
-
-  get "/about/author" => 'public#author'
-
-  
 end
