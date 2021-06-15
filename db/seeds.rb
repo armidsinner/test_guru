@@ -5,18 +5,24 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(name:"David", score: 0, email:"david@gmail.com", password:"david")
-User.create(name:"Erick", score: 0, email:"erick@gmail.com", password:"erick")
-User.create(name:"John", score: 0, email:"john@gmail.com", password:"john")
-Category.create(title:"Math")
-Category.create(title:"Biology")
-Category.create(title:"Chemistry")
-Test.create(title:"Linear Algebra", level:2, author_id:1, category_id:1)
-Test.create(title:"Molecular Biology", level:1, author_id:2, category_id:2)
-Test.create(title:"Biochemistry", level:1, author_id:3, category_id:3)
-Question.create(title:"Equals", test_id: 1)
-Question.create(title:"Zitoplazma", test_id: 2)
-Question.create(title:"Argon", test_id: 3)
-Answer.create(title:"x = 2", question_id:1, correct: true)
-Answer.create(title:"Lipidic ", question_id:2, correct: true)
-Answer.create(title:"Inert", question_id:3, correct: true)
+
+users = User.create!([{ name: 'David', score: 0, email: 'david@gmail.com', password: 'david' },
+                      { name: 'Erick', score: 0, email: 'erick@gmail.com', password: 'erick' },
+                      { name: 'John', score: 0, email: 'john@gmail.com', password: 'john' }])
+
+categories = Category.create!([{ title: 'Math' }, { title: 'Biology' }, { title: 'Chemistry' }])
+
+tests = Test.create!([{ title: 'Linear Algebra', level: 2, author_id: users[0].id,
+                        category_id: categories[0].id },
+                      { title: 'Biochemistry', level: 1, author_id: users[2].id,
+                        category_id: categories[2].id },
+                      { title: 'Molecular Biology', level: 1, author_id: users[0].id,
+                        category_id: categories[1].id }])
+
+questions = Question.create!([{ title: 'Equals', test_id: tests[0].id },
+                              { title: 'Zitoplazma', test_id: tests[2].id },
+                              { title: 'Argon', test_id: tests[1].id }])
+
+answers = Answer.create!([{ title: 'x = 2', question_id: questions[0].id, correct: true },
+                          { title: 'Lipidic ', question_id: questions[1].id, correct: true },
+                          { title: 'Inert', question_id: questions[2].id, correct: true }])
