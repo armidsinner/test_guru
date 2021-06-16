@@ -23,8 +23,8 @@ questions = Question.create!([{ title: 'Equals', test_id: tests[0].id },
                               { title: 'Zitoplazma', test_id: tests[2].id },
                               { title: 'Argon', test_id: tests[1].id }])
 
-answers = Answer.create!([{ title: 'x = 2', question_id: questions[0].id, correct: true },
+Answer.create!([{ title: 'x = 2', question_id: questions[0].id, correct: true },
                           { title: 'Lipidic ', question_id: questions[1].id, correct: true },
                           { title: 'Inert', question_id: questions[2].id, correct: true }])
 
-results = Result.create!([{user_id: users[0].id, test_id: tests[0].id }])
+Result.create!([{user_id: users[0].id, test_id: tests[0].id }])
