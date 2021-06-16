@@ -3,5 +3,3 @@ class Test < ActiveRecord::Base
     joins('Join categories ON tests.category_id = categories.id').where(categories: { title: needed_category }).order(title: :desc).pluck(:title)
   end
 end
-
-# pp Test.tests_with_category('Math')
