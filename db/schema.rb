@@ -34,13 +34,6 @@ ActiveRecord::Schema.define(version: 20210618111519) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "results", force: :cascade do |t|
-    t.integer  "test_id",    null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "tests", force: :cascade do |t|
     t.string   "title",                   null: false
     t.integer  "level",       default: 0, null: false

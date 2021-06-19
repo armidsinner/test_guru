@@ -12,19 +12,21 @@ users = User.create!([{ name: 'David', score: 0, email: 'david@gmail.com', passw
 
 categories = Category.create!([{ title: 'Math' }, { title: 'Biology' }, { title: 'Chemistry' }])
 
-tests = Test.create!([{ title: 'Linear Algebra', level: 2, author_id: users[0].id,
-                        category_id: categories[0].id },
-                      { title: 'Biochemistry', level: 1, author_id: users[2].id,
-                        category_id: categories[2].id },
-                      { title: 'Molecular Biology', level: 1, author_id: users[0].id,
-                        category_id: categories[1].id }])
+tests = Test.create!([{ title: 'Linear Algebra', level: 2, author: users[0],
+                        category: categories[0] },
+                      { title: 'Biochemistry', level: 1, author: users[2],
+                        category: categories[2] },
+                      { title: 'Molecular Biology', level: 1, author: users[0],
+                        category: categories[1] }])
 
-questions = Question.create!([{ title: 'Equals', test_id: tests[0].id },
-                              { title: 'Zitoplazma', test_id: tests[2].id },
-                              { title: 'Argon', test_id: tests[1].id }])
+questions = Question.create!([{ title: 'Equals', test: tests[0] },
+                              { title: 'Zitoplazma', test: tests[2] },
+                              { title: 'Argon', test: tests[1] }])
 
-Answer.create!([{ title: 'x = 2', question_id: questions[0].id, correct: true },
-                          { title: 'Lipidic ', question_id: questions[1].id, correct: true },
-                          { title: 'Inert', question_id: questions[2].id, correct: true }])
+Answer.create!([{ title: 'x = 2', question: questions[0], correct: true },
+                { title: 'Lipidic ', question: questions[1], correct: true },
+                { title: 'Inert', question: questions[2], correct: true }])
+                
+TestsUser.create!([{user: users[0], test: tests[0] }])
 
-Result.create!([{user_id: users[0].id, test_id: tests[0].id }])
+
