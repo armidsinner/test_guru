@@ -14,7 +14,7 @@ class Test < ActiveRecord::Base
 
   validates :title, presence: true, uniqueness: true
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :title, uniqueness: { :scope => :level }
+  validates :title, uniqueness: { scope: :level }
 
   def self.tests_with_category_array
     tests_with_category.pluck(:title)
