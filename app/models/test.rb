@@ -12,7 +12,7 @@ class Test < ActiveRecord::Base
   scope :hard, -> { where(level: 5..Float::INFINITY) }
   scope :tests_with_category, ->(needed_category) { joins(:category).where(categories: { title: needed_category }).order(title: :desc) }
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
   validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :title, uniqueness: { scope: :level }
 
