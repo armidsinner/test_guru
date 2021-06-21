@@ -4,7 +4,8 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
 
   validates :title, presence: true
-  validate :amount_of_users?
+  validate :amount_of_users?, on: :create
+  validate :amount_of_users?, on: :update
 
   def amount_of_users?
     errors.add("The amount of answers must be between 1 and 4.") unless self.answers.count <= 4 and self.answers.count >= 1 
