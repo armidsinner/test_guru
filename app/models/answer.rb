@@ -7,6 +7,6 @@ class Answer < ActiveRecord::Base
   scope :correct, -> { where(correct: true) }
 
   def amount_of_answers?
-    errors.add(:question, "The amount of answers must be between 1 and 4.") unless question.answers.count <= 3 and question.answers.count >= 0 
+    errors.add(:question, "The amount of answers must be between 1 and 4.") unless question.answers.count <= 3 
   end
 end
