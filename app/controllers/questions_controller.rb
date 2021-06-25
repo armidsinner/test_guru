@@ -11,16 +11,20 @@ class QuestionsController < ApplicationController
     render inline: 'Вопрос с заданным ID: <%= @test.questions.find(params[:id]).inspect %>'
   end
 
-  def new
-
-  end
+  def new; end
   
   def create
-    @question = @test.questions.create!(question_params)
+    @question = @test.questions.create(question_params)
+    if @question.save
+      render :create
+    else
+      render :new
+    end
   end
 
   def destroy
     @question.destroy
+    render :destroy
   end
 
   private
