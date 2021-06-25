@@ -1,10 +1,10 @@
 class QuestionsController < ApplicationController
-  before_action :find_test 
+  before_action :find_test, only: [:index, :create, :show]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
   def index 
-    render inline: 'Вопросы для заданного теста: <%= @test.questions.inspect %>'
+    render inline: 'Вопросы заданного теста: <%= @test.questions.inspect %>'
   end
 
   def show 
@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   def create
     @question = @test.questions.build(question_params)
     if @question.save
-      render :create
+      render inline: 'Был создан вопрос: <%= @question.inspect %>'
     else
       render :new
     end
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    render :destroy
+    render inline: 'Вопросы заданного теста: <%= @test.questions.inspect %>'
   end
 
   private
@@ -38,6 +38,6 @@ class QuestionsController < ApplicationController
   end
 
   def rescue_with_question_not_found
-    render plain: 'Question was not found'
+    render plain: 'Вопрос не найден!'
   end 
 end
