@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
   def new; end
   
   def create
-    @question = @test.questions.create(question_params)
+    @question = @test.questions.build(question_params)
     if @question.save
       render :create
     else
