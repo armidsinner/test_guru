@@ -3,7 +3,10 @@
   <%= @question.title %>
 </p>
 
-<%= link_to 'Редактировать вопрос', controller: "questions", action: "edit", id: @question %> |
-<%= link_to 'Вернуться к списку вопросов', test_questions_path %> | 
-<%= link_to 'Удалить вопрос', controller: "questions", action: "destroy", id: @question %> 
+<%= link_to 'Редактировать вопрос', edit_question_path(@question) %> |
+<%= link_to 'Вернуться к тесту', controller: "tests", action: "show", id: @question.test_id %> | 
+<%= link_to 'Удалить', question_path(@question),
+                       method: :delete,
+                       data: {confirm: 'Вы уверены?'} %>
+                  
   

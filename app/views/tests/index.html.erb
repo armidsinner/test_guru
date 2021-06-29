@@ -1,4 +1,4 @@
-<h1>Список всех тестов</h1>
+<thead>Список всех тестов</thead>
 
 <table>
   <tr>
@@ -9,3 +9,7 @@
 
   <%= render @tests %>
 <table>
+
+<p>
+  <%= link_to 'Создать тест', new_test_path(@test) %>
+</p>
