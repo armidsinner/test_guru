@@ -1,0 +1,11 @@
+  <% if resourse.errors.present? %>
+    <div>
+      <h2>Количество обнаруженных ошибок: <%= @question.errors.count %></h2>
+
+      <ul>
+        <% @question.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %> 

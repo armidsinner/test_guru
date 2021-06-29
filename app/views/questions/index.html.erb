@@ -1,0 +1,19 @@
+<% if @test.questions.present? %>
+  <h1>Искомый тест</h1>
+    <p>Название: <%= @test.title %></p>
+    <p>Уровень сложности: <%= @test.level %></p>
+    <p>Название категории: <%= @test.category.title%>
+  <h2>Тесты для заданного вопроса</h2>
+  <table>
+    <tr>
+    <th>Название</th>
+    <th></th>
+  <%= render @test.questions %>
+
+  <p>
+    <%= link_to 'Создать новый вопрос', new_test_question_path %>
+ </p>
+
+<% else %>
+  <p>Для теста не создано ни одного вопроса.</p>
+<% end %>

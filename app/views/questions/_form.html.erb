@@ -1,0 +1,15 @@
+<%= form_with model: [@test, @question], local: true do |form| %>
+  <%= render 'shared/errors', resourse: @question %>
+
+  <p>
+    <%= form.label :title, 'Название' %><br>
+    <%= form.text_field :title, value: @question.title %>
+  </p>
+
+  <p>
+    <%= form.label :test_id, 'Название теста' %>:
+    <%= form.collection_select :test_id, Test.all, :id, :title, prompt: true %>
+  </p>
+
+  <p><%= form.submit 'Сохранить' %></p>
+<% end %>
