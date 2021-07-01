@@ -15,7 +15,7 @@ class TestsController < ApplicationController
   end
 
   def create 
-    @test = Test.new(test_params)
+    @test = Test.new(title: test_params[:title], level: test_params[:level], category_id: test_params[:category_id], author_id: User.first.id)
     if @test.save
       redirect_to @test
     else 
