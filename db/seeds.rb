@@ -13,8 +13,8 @@ users = User.create!([{ name: 'David', score: 0, email: 'david@gmail.com', passw
 categories = Category.create!([{ title: 'Math' }, { title: 'Biology' }, { title: 'Chemistry' }])
 
 tests = Test.create!([{ title: 'Linear Algebra', level: 2, author: users[0], category: categories[0] },
-                      { title: 'Biochemistry', level: 1, author: users[2], category: categories[2] },
-                      { title: 'Molecular Biology', level: 1, author: users[0], category: categories[1] }])
+                      { title: 'Biochemistry', level: 1, author: users[1], category: categories[2] },
+                      { title: 'Molecular Biology', level: 1, author: users[1], category: categories[1] }])
 
 questions = Question.create!([{ title: 'Equals', test: tests[0] },
                               { title: 'Zitoplazma', test: tests[2] },
@@ -24,4 +24,3 @@ Answer.create!([{ title: 'x = 2', question: questions[0], correct: true },
                 { title: 'Lipidic ', question: questions[1], correct: true },
                 { title: 'Inert', question: questions[2], correct: true }])
 
-TestsUser.create!([{user: users[0], test: tests[0] }])
