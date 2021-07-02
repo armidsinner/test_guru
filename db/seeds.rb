@@ -23,5 +23,3 @@ questions = Question.create!([{ title: 'Equals', test: tests[0] },
 Answer.create!([{ title: 'x = 2', question: questions[0], correct: true },
                 { title: 'Lipidic ', question: questions[1], correct: true },
                 { title: 'Inert', question: questions[2], correct: true }])
-
-TestsUser.create!([{user: users[0], test: tests[0] }])
