@@ -1,11 +1,5 @@
-<h1>Создать новый вопрос</h1>
+<h1><%= question_header(@question) %></h1>
 
-<form action="/tests/<%=params[:test_id]%>/questions" method="post">
-  <input name="authenticity_token" name="<%= form_authenticity_token %>" type="hidden">
-  <p>
-    <label for="question-title">Название:</label>
-    <input type="text" name="question[title]" id="question-title">
-  </p><br>
+<%= render 'form' %>
 
-  <input type="submit" value="Создать">
-</form>
+<%= link_to 'Вернуться к списку вопросов', test_path(@test) %>

@@ -1,0 +1,17 @@
+<h1>Список всех тестов</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Уровень сложности</th>
+      <th>Количество вопросов</th>
+    </tr>
+  </thead>
+
+  <%= render @tests %>
+<table>
+
+<p>
+  <%= link_to 'Создать тест', new_test_path(@test) %>
+</p>
