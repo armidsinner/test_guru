@@ -1,4 +1,6 @@
 class TestPassage < ApplicationRecord
+  SUCCESS_PERCENT = 85
+
   belongs_to :user
   belongs_to :test
   belongs_to :current_question, class_name: 'Question'
@@ -20,12 +22,12 @@ class TestPassage < ApplicationRecord
     test.questions.order(:id).where('id < ?', current_question.id).count + 1
   end
 
-  def result_of_passing
-    percent_of_correct_answers >= 85
+  def test_passed?
+    percent_of_correct_answers >= SUCCESS_PERCENT
   end
 
   def percent_of_correct_answers
-    correct_answers.count * 100 / test.questions.count.round(1)
+    correct_answers.count.to_f * 100 / test.questions.count.round(1)
   end
 
   private
@@ -43,9 +45,7 @@ class TestPassage < ApplicationRecord
   end
 
   def correct_answer?(answers_ids)
-    correct_answers_count = correct_answers.count
-    (correct_answers_count == correct_answers.where(id: answers_ids).count) && 
-    correct_answers_count == answers_ids.count
+    correct_answers.ids.sort == Array(answers_ids).map(&:to_i).sort
   end
 
   def correct_answers
