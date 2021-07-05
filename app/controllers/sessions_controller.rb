@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to cookies.delete(:path) || root_path
     else
-      flash.now[:alert] = 'Введите почту и пароль!'
+      flash.now[:alert] = 'Проверьте почту и пароль!'
       render :new
     end
   end
