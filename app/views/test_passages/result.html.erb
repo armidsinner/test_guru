@@ -1,0 +1,8 @@
+<h1>Тест <%= @test_passage.test.title %> был завершен </h1>
+
+<% if @test_passage.test_passed? %>
+  <p>Результат прохождения: <span class="passed"><%= @test_passage.percent_of_correct_answers %>% Тест успешно сдан</span></p>
+<% else %>
+  <p>Результат прохождения: <span class="failed"><%= @test_passage.percent_of_correct_answers %>% Тест провален</span></p>
+<% end %>
+<%= link_to 'Вернуться к выбору теста', tests_path%>
