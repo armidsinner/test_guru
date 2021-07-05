@@ -14,6 +14,12 @@
   <body>
     <% if logged_in? %>
       <p class="nav user">Добро пожаловать, <b><%= current_user.name %></b> Гуру</p>
+      <p class="nav user"><%= link_to 'Выйти', logout_path, method: :delete, data: {confirm: 'Вы уверены?'}%></p>
+      <p class="nav user"><%= link_to 'TestGuru', root_path%></p>
+    <% else %>
+      <p class="nav user"><%= link_to 'Регистрация', signup_path %></p>
+      <p class="nav user"><%= link_to 'Авторизация', login_path%></p>
+      <p class="nav user"><%= link_to 'TestGuru', root_path%></p>
     <% end %>
 
     <%= yield %>
