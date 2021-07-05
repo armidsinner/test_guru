@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_question, only: %i[new create]
   before_action :find_answer, only: %i[show edit update destroy]
 
@@ -15,6 +16,7 @@ class AnswersController < ApplicationController
     if @answer.save 
       redirect_to @answer
     else 
+      flash.now[:alert] = 'Проверьте введенные Email и пароль'
       render :new
     end
   end
