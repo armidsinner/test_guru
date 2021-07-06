@@ -16,6 +16,7 @@ class AnswersController < ApplicationController
     if @answer.save 
       redirect_to @answer
     else 
+      flash.now[:alert] = 'Проверьте введенные Email и пароль'
       render :new
     end
   end
