@@ -15,7 +15,7 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def create 
-    @test = Test.new(title: test_params[:title], level: test_params[:level], category_id: test_params[:category_id], author_id: User.first.id)
+    @test = current_user.authored_tests.new(test_params)
     if @test.save
       redirect_to [:admin, @test]
     else 
