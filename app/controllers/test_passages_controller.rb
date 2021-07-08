@@ -22,7 +22,8 @@ class TestPassagesController < ApplicationController
 
     if gist_service.success?
       current_user.gists.create!(question: @test_passage.current_question, url: result.html_url)
-      flash[:notice] = "Gist был успешно создан! #{view_context.link_to('Ссылка на созданный gist:', result.html_url, target: "_blank")}".html_safe
+      flash[:notice] = "Gist был успешно создан! #{view_context.link_to('Ссылка на созданный gist:', 
+                                                   result.html_url, target: "_blank")}".html_safe
     else 
       flash[:alert] = 'Ошибка при создании gist!'
     end
