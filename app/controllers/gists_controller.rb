@@ -23,4 +23,3 @@ class GistsController < ApplicationController
     view_context.link_to('Просмотреть созданный gist на GitHub', @result.get_html_url, target: "_blank")
   end 
 end
-
