@@ -1,6 +1,5 @@
 class GistQuestionService
 
-
   def initialize(question, client: octokit_client)
     @question = question
     @test = @question.test
@@ -8,11 +7,13 @@ class GistQuestionService
   end
 
   def call 
-    @client.create_gist(gist_params)
-  end
-
-  def success?
-    @client.last_response.data.html_url.present?
+    created_gist = @client.create_gist(gist_params)
+    Struct.new('HtmlGetter', :gist) do
+      def get_html_url
+        self.gist.html_url
+      end
+    end
+    Struct::HtmlGetter.new(created_gist)
   end
 
   private
@@ -33,8 +34,6 @@ class GistQuestionService
   end
 
   def gist_content
-    content = [@question.title]
-    content += @question.answers.pluck(:title)
-    content.join("\n")
+    [@question.title, *@question.answers.pluck(:title)].join("\n")
   end
 end
