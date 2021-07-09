@@ -1,6 +1,6 @@
 class TestPassagesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_test_passage, only: %i[show update result gist]
+  before_action :find_test_passage, only: %i[show update result ]
 
   def show; end
 
@@ -14,20 +14,6 @@ class TestPassagesController < ApplicationController
     else
       render :show
     end
-  end
-
-  def gist
-    gist_service = GistQuestionService.new(@test_passage.current_question)
-    result = gist_service.call
-
-    if gist_service.success?
-      current_user.gists.create!(question: @test_passage.current_question, url: result.html_url)
-      flash[:notice] = "Gist был успешно создан! #{view_context.link_to('Ссылка на созданный gist:', 
-                                                   result.html_url, target: "_blank")}".html_safe
-    else 
-      flash[:alert] = 'Ошибка при создании gist!'
-    end
-    redirect_to @test_passage
   end
 
   private

@@ -3,3 +3,4 @@ class Admin::GistsController < Admin::BaseController
     @gists = Gist.all
   end
 end
+
