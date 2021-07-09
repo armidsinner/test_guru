@@ -4,4 +4,3 @@ ru:
   services:
     gist_question_service:
       desc: "Вопрос теста %{title}"
-
