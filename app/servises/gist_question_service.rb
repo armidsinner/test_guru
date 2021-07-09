@@ -1,5 +1,4 @@
 class GistQuestionService
-
   def initialize(question, client: octokit_client)
     @question = question
     @test = @question.test
