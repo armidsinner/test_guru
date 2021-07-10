@@ -14,5 +14,6 @@
       <%= b.label %>
     </p>
   <% end %>
+   <p><%= link_to 'Gist вопрос', test_passage_gists_path(@test_passage), method: :create %></p>
   <p><%= form.submit 'Слудующий вопрос' %></p>
 <% end %>
