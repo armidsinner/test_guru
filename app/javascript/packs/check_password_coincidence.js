@@ -12,10 +12,10 @@ class Check_confirmation {
     document.addEventListener('turbolinks:load', function () {
       let control = document.getElementById("check-coincidence")
 
-      if (control) { control.addEventListener('input', passwordCheck) }
+      if (control) { control.addEventListener('input', userInputCheck) }
     })
 
-    function passwordCheck() {
+    function userInputCheck() {
       let user_input = document.getElementById(id1)
       let confirmation = document.getElementById(id2)
       let match = document.querySelector('.octicon-check-circle').classList
