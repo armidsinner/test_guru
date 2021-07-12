@@ -1,13 +1,16 @@
 class Sorting {
   #id
-  constructor(id) {
+  #sorting_type
+  constructor(id, sorting_type) {
     this.#id = id
+    this.#sorting_type = sorting_type
   }
 
   sort_table() {
     element_id = this.#id
+    sorting_type = this.#sorting_type
     document.addEventListener('turbolinks:load', function() {
-      let control = document.querySelector('.sort-by-title')
+      let control = document.getElementById(sorting_type)
 
       if (control) { control.addEventListener('click',sortRowsByTitle) }
     })
@@ -69,5 +72,5 @@ class Sorting {
 }
 
 
-const sorted_table = new Sorting('table')
+const sorted_table = new Sorting('table', "sort-by-title")
 sorted_table.sort_table()

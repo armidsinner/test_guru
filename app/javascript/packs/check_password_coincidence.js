@@ -1,16 +1,19 @@
 class Check_coincidence {   
 #first_element_to_compare_id
 #second_element_to_compare_id
-  constructor(first_element_to_compare_id, second_element_to_compare_id) {
+#check_type
+  constructor(first_element_to_compare_id, second_element_to_compare_id, check_type) {
     this.#first_element_to_compare_id = first_element_to_compare_id
     this.#second_element_to_compare_id = second_element_to_compare_id
+    this.#check_type = check_type
   }
    
   compare() {
     id1 = this.#first_element_to_compare_id
     id2 = this.#second_element_to_compare_id
+    check_type = this.#check_type
     document.addEventListener('turbolinks:load', function () {
-      let control = document.querySelector('.check-coincidence')
+      let control = document.getElementById(check_type)
 
       if (control) { control.addEventListener('input', passwordCheck) }
     })
@@ -48,5 +51,5 @@ class Check_coincidence {
   }
 }
 
-const compare_passwords = new Check_coincidence('user_password', 'user_password_confirmation')
+const compare_passwords = new Check_coincidence('user_password', 'user_password_confirmation', "check-coincidence")
 compare_passwords.compare()
