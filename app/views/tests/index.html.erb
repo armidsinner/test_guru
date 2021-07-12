@@ -3,7 +3,11 @@
 <table>
   <thead>
     <tr>
-      <th>Название</th>
+      <th class="sort-by-title pointer">
+        Название
+        <%= octicon 'arrow-up', class: 'text-success hide' %>
+        <%= octicon 'arrow-down', class: 'text-danger hide' %>
+      </th>
       <th>Уровень сложности</th>
       <th>Количество вопросов</th>
     </tr>

@@ -3,7 +3,10 @@
   <head>
     <title>Admin Panel | TestGuru</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'sorting', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'check_password_confirmation', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
