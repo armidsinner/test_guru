@@ -9,14 +9,18 @@ class Sorting {
   sort_table() {
     element_id = this.id
     sorting_type = this.sorting_type
-    document.addEventListener('turbolinks:load', function() {
-      let control = document.getElementById(sorting_type)
-
-      if (control) { control.addEventListener('click',sortRowsByTitle) }
-    })
+    document.addEventListener('turbolinks:load',
+    ()=>this.setControl(sorting_type, element_id))
   }
 
-  sortRowsByTitle() {
+  setControl(sorting_type, element_id) {
+    let control = document.getElementById(sorting_type)
+      
+    if (control) control.addEventListener('click', 
+    ()=>this.sortRowsByTitle(element_id,control)) 
+  }
+
+  sortRowsByTitle(element_id) {
     let table = document.getElementById(element_id)
     let rows = table.querySelectorAll('tr')
     let sortedRows = []
@@ -25,19 +29,20 @@ class Sorting {
       sortedRows.push(rows[i])
     }
 
-    let arrowUp = this.querySelector('.octicon-arrow-up')
-    let arrowDown = this.querySelector('.octicon-arrow-down')
-
-    if (this.querySelector('.octicon-arrow-up').classList.contains('hide')) {
-      sortedRows.sort(compareRowsAsc)
-      this.querySelector('.octicon-arrow-up').classList.remove('hide')
-      this.querySelector('.octicon-arrow-down').classList.add('hide')
-    } else {
-      sortedRows.sort(compareRowsDesc)
-      this.querySelector('.octicon-arrow-up').classList.add('hide')
-      this.querySelector('.octicon-arrow-down').classList.remove('hide')
+    if (table.querySelector('.octicon-arrow-up').classList.contains('hide')) {
+      sortedRows.sort(this.compareRowsAsc)
+      table.querySelector('.octicon-arrow-up').classList.remove('hide')
+      table.querySelector('.octicon-arrow-down').classList.add('hide')
+    } 
+    else {
+      sortedRows.sort(this.compareRowsDesc)
+      table.querySelector('.octicon-arrow-up').classList.add('hide')
+      table.querySelector('.octicon-arrow-down').classList.remove('hide')
     }
+    this.generateNewTable(rows, table, sortedRows) 
+  }
 
+  generateNewTable(rows, table, sortedRows) {
     let sortedTable = document.createElement('table')
     sortedTable.setAttribute('id', 'table')
     sortedTable.appendChild(rows[0])

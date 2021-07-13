@@ -7,37 +7,38 @@ class Check_confirmation {
     }
   
   compare() {
-    element_to_compare_with = this.first_element_to_compare_id
-    compering_element = this.second_element_to_compare_id
-    document.addEventListener('turbolinks:load', function () {
-      let control = document.getElementById("check-coincidence")
+    const element_to_compare_with = this.first_element_to_compare_id
+    const compering_element = this.second_element_to_compare_id
+    document.addEventListener('turbolinks:load', 
+    ()=>this.setControl(element_to_compare_with, compering_element))
+  }
 
-      if (control) control.addEventListener('input', () =>{
-        this.userInputCheck(element_to_compare_with, compering_element)
-        }) 
-    })
+  setControl(element_to_compare_with, compering_element) {
+    let control = document.getElementById("check-coincidence")
+      if (control) control.addEventListener('input', 
+      ()=>this.userInputCheck(element_to_compare_with, compering_element)) 
   }
 
   userInputCheck(element_to_compare_with, compering_element) {
-    const user_input = document.getElementById(element_to_compare_with);
-    const confirmation = document.getElementById(compering_element);
-    let match = document.querySelector('.octicon-check-circle').classList;
-    let notMatch = document.querySelector('.octicon-alert').classList;
+    const user_input = document.getElementById(element_to_compare_with)
+    const confirmation = document.getElementById(compering_element)
+    let match = document.querySelector('.octicon-check-circle').classList
+    let notMatch = document.querySelector('.octicon-alert').classList
 
     if (confirmation.value) {
       if (user_input.value === confirmation.value) {
-        ()=>{this.inform_about_considense(user_input, confirmation, match, notMatch)}
+        this.inform_about_considense(user_input, confirmation, match, notMatch)
       } 
       if (user_input.value !== confirmation.value) {
-        ()=>{this.inform_about_nonconsidense(user_input, confirmation, match, notMatch)}
+        this.inform_about_nonconsidense(user_input, confirmation, match, notMatch)
       }
     }
     if (confirmation.value.length === 0) {
-      ()=>{this.while_user_input_is_absent(user_input, confirmation, match, notMatch)}
+      this.while_user_input_is_absent(user_input, confirmation, match, notMatch)
     }
   }
 
-  inform_abouy_nonconsidense(user_input, confirmation, match, notMatch) {
+  inform_about_nonconsidense(user_input, confirmation, match, notMatch) {
     match.add('hide')
     notMatch.remove('hide')
     user_input.classList.remove('border-green')
@@ -63,4 +64,6 @@ class Check_confirmation {
   }
 }
   
+
 module.exports = Check_confirmation
+
