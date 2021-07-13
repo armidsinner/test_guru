@@ -11,3 +11,11 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+const Check_confirmation = require('./check_confirmation.js')
+const compare_passwords = new Check_confirmation('user_password', 'user_password_confirmation')
+compare_passwords.compare()
+
+const Sorting = require('./sorting.js')
+const sorted_table = new Sorting('table', "sort-by-title")
+sorted_table.sort_table()

@@ -1,9 +1,13 @@
 <h1>Список всех тестов</h1>
 
-<table>
+<table id="table">
   <thead>
     <tr>
-      <th>Название</th>
+      <th class="pointer", id="sort-by-title">
+        Название
+        <%= octicon 'arrow-up', class: 'text-success hide' %>
+        <%= octicon 'arrow-down', class: 'text-warning hide' %>
+      </th>
       <th>Уровень сложности</th>
       <th>Количество вопросов</th>
       <th>Действия</th>
