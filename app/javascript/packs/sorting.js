@@ -17,10 +17,10 @@ class Sorting {
     let control = document.getElementById(sorting_type)
       
     if (control) control.addEventListener('click', 
-    ()=>this.sortRowsByTitle(element_id,control)) 
+    ()=>this.sortRows(element_id)) 
   }
 
-  sortRowsByTitle(element_id) {
+  sortRows(element_id) {
     let table = document.getElementById(element_id)
     let rows = table.querySelectorAll('tr')
     let sortedRows = []
