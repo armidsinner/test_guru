@@ -1,6 +1,4 @@
 class Sorting {
-  id
-  sorting_type
   constructor(id, sorting_type) {
     this.id = id
     this.sorting_type = sorting_type
