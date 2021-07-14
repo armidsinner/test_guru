@@ -7,11 +7,6 @@ export class CheckConfirmation {
   compare() {
     const element_to_compare_with = this.first_element_to_compare_id
     const compering_element = this.second_element_to_compare_id
-    document.addEventListener('turbolinks:load', 
-    ()=>this.setControl(element_to_compare_with, compering_element))
-  }
-
-  setControl(element_to_compare_with, compering_element) {
     let control = document.getElementById("check-coincidence")
       if (control) control.addEventListener('input', 
       ()=>this.userInputCheck(element_to_compare_with, compering_element)) 

@@ -7,11 +7,6 @@ export class Sorting {
   sort_table() {
     const element_id = this.id
     const sorting_type = this.sorting_type
-    document.addEventListener('turbolinks:load',
-    ()=>this.setControl(sorting_type, element_id))
-  }
-
-  setControl(sorting_type, element_id) {
     let control = document.getElementById(sorting_type)
       
     if (control) control.addEventListener('click', 
