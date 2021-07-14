@@ -1,12 +1,12 @@
-class Sorting {
+export class Sorting {
   constructor(id, sorting_type) {
     this.id = id
     this.sorting_type = sorting_type
   }
 
   sort_table() {
-    element_id = this.id
-    sorting_type = this.sorting_type
+    const element_id = this.id
+    const sorting_type = this.sorting_type
     document.addEventListener('turbolinks:load',
     ()=>this.setControl(sorting_type, element_id))
   }
@@ -19,7 +19,7 @@ class Sorting {
   }
 
   sortRows(element_id) {
-    let table = document.getElementById(element_id)
+    const table = document.getElementById(element_id)
     let rows = table.querySelectorAll('tr')
     let sortedRows = []
 
@@ -70,5 +70,3 @@ class Sorting {
     return 0
   }
 }
-
-module.exports = Sorting

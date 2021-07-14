@@ -1,4 +1,4 @@
-class CheckConfirmation {   
+export class CheckConfirmation {   
     constructor(first_element_to_compare_id, second_element_to_compare_id) {
       this.first_element_to_compare_id = first_element_to_compare_id
       this.second_element_to_compare_id = second_element_to_compare_id
@@ -61,5 +61,3 @@ class CheckConfirmation {
     confirmation.classList.remove('border-orange')
   }
 }
-  
-module.exports = CheckConfirmation  

@@ -12,10 +12,18 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-const Check_confirmation = require('./check_confirmation.js')
-const compare_passwords = new Check_confirmation('user_password', 'user_password_confirmation')
+import {CheckConfirmation} from './check_confirmation.js'
+const compare_passwords = new CheckConfirmation('user_password', 'user_password_confirmation')
 compare_passwords.compare()
 
-const Sorting = require('./sorting.js')
+import {Sorting} from './sorting.js'
 const sorted_table = new Sorting('table', "sort-by-title")
 sorted_table.sort_table()
+
+import {EditTitle} from './form_inline.js'
+const edit_title = new EditTitle()
+edit_title.edit_title()
+
+import {ProgressBar} from './progress_bar.js'
+const bar = new ProgressBar()
+bar.add_progress_bar()

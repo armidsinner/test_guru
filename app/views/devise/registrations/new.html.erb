@@ -28,7 +28,7 @@
     <%= octicon 'alert', class: 'text-warning hide' %>
   </div>
 
-  <div class="field check-coincidence">
+  <div id ="check-coincidence" class="check-field">
     <%= f.label :password_confirmation, 'Подтвердите пароль' %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     <%= octicon 'check-circle', class: 'text-success hide' %>
