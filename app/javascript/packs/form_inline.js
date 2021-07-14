@@ -1,34 +1,31 @@
 export class EditTitle {
-  constructor(id){
-    this.id = id
-  }
 
   edit_title() {
-    document.addEventListener('turbolinks:load', function () {
-    let controls = document.querySelectorAll('.form-inline-link')
+    document.addEventListener('turbolinks:load', ()=> this.set_control())
+  }
 
-    if (controls.length) {
-      for (let i = 0; i < controls.length; i++) {
-        controls[i].addEventListener('click', formInLineLinkHandler)
-      }
-    }
+  set_control() {
+    const controls = document.querySelectorAll('.form-inline-link')
 
-    var errors = document.querySelector('.resource-errors')
+    controls.forEach(control => {
+      control.addEventListener('click', (event)=> this.formInLineLinkHandler(event, control))
+    })
+
+    let errors = document.querySelector('.resource-errors')
 
     if (errors) {
       let resourceId = errors.dataset.resourceId
-      formInLineHandler(resourceId)
+      this.formInLineHandler(resourceId)
     }
-  })
-
-  function formInLineLinkHandler(event) {
-    event.preventDefault()
-
-    let testId = this.dataset.testId
-    formInLineHandler(testId)
   }
 
-  function formInLineHandler(testId) {
+  formInLineLinkHandler(event, control) {
+    event.preventDefault()
+    let testId = control.dataset.testId
+    this.formInLineHandler(testId)
+  }
+
+  formInLineHandler(testId) {
     const link = document.querySelector('.form-inline-link[data-test-id="' + testId + '"]')
     const formInLine = document.querySelector('.form-inline[data-test-id="' + testId + '"]')
     const testTitle = document.querySelector('.test-title[data-test-id="' + testId + '"]')
@@ -44,6 +41,5 @@ export class EditTitle {
         link.textContent = 'Редактировать название теста'
       }
     }
-  }
   }
 }
