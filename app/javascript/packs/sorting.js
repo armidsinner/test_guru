@@ -45,9 +45,9 @@ export class Sorting {
     sortedTable.setAttribute('id', 'table')
     sortedTable.appendChild(rows[0])
 
-    for ( let i = 0; i < sortedRows.length; i++) {
-      sortedTable.appendChild(sortedRows[i])
-    }
+    sortedRows.forEach(sortedRow => {
+      sortedTable.appendChild(sortedRow)
+    })
 
     table.parentNode.replaceChild(sortedTable, table)
   }
