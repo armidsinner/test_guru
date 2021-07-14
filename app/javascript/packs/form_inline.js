@@ -1,14 +1,10 @@
 export class EditTitle {
 
   edit_title() {
-    document.addEventListener('turbolinks:load', ()=> this.set_control())
-  }
-
-  set_control() {
     const controls = document.querySelectorAll('.form-inline-link')
 
     controls.forEach(control => {
-      control.addEventListener('click', (event)=> this.formInLineLinkHandler(event, control))
+      control.addEventListener('click', event=> this.formInLineLinkHandler(event, control))
     })
 
     let errors = document.querySelector('.resource-errors')
