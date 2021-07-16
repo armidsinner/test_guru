@@ -1,7 +1,7 @@
 export class Timer{
 timeLeft
   set_timer (){
-    const timer = document.querySelector('.timer')
+    const timer = document.getElementById('timer')
     if (timer) {
       this.timeLeft = timer.dataset.timer * 60
       const url = timer.dataset.url
