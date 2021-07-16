@@ -2,6 +2,13 @@
 
 <p>Ход прохождения: <%= @test_passage.current_question_position %>/<%= @test_passage.test.questions.count %></p>
 
+<div class="progress">
+  <div class="progress-bar" id="progress-bar" data-progress="<%= @test_passage.progress_percent %>"
+       aria-valuemax="100">
+    <%= @test_passage.progress_percent %>
+  </div>
+</div>
+
 <b>
   <%= @test_passage.current_question.title%>
 <b>

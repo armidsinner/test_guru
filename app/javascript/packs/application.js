@@ -7,15 +7,26 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import {Sorting} from './sorting.js'
+import {CheckConfirmation} from './check_confirmation.js'
+import {EditTitle} from './form_inline.js'
+import {ProgressBar} from './progress_bar.js'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-const Check_confirmation = require('./check_confirmation.js')
-const compare_passwords = new Check_confirmation('user_password', 'user_password_confirmation')
-compare_passwords.compare()
 
-const Sorting = require('./sorting.js')
 const sorted_table = new Sorting('table', "sort-by-title")
-sorted_table.sort_table()
+const bar = new ProgressBar()
+const compare_passwords = new CheckConfirmation('user_password', 'user_password_confirmation')
+const edit_title = new EditTitle()
+
+document.addEventListener('turbolinks:load', function() {
+  compare_passwords.compare()
+  edit_title.edit_title()
+  sorted_table.sort_table()
+  bar.add_progress_bar()
+})
+
+
