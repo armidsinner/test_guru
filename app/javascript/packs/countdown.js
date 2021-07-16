@@ -9,7 +9,6 @@ timeLeft
       setInterval(()=>this.interval_ongoing(url, timer), 1000)
     }
   }
-  //this.interval_ongoing(timeLeft, url, timer)
 
   interval_ongoing(url, timer){
     if (this.timeLeft <= 0 ){
@@ -18,7 +17,6 @@ timeLeft
     this.timeLeft--
     this.change_timer(timer)
   }
-
 
   change_timer(timer) {
     let minutes = Math.floor(this.timeLeft / 60)
