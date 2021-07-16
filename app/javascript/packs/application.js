@@ -17,7 +17,7 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-const timer = new Timer()
+const countdown_timer = new Timer()
 const sorted_table = new Sorting('table', "sort-by-title")
 const bar = new ProgressBar()
 const compare_passwords = new CheckConfirmation('user_password', 'user_password_confirmation')
@@ -28,7 +28,9 @@ document.addEventListener('turbolinks:load', function() {
   edit_title.edit_title()
   sorted_table.sort_table()
   bar.add_progress_bar()
-  timer.set_timer()
+  const timer = document.getElementById('timer')
+  if (timer) {
+    const countdown_timer = new Timer(timer)
+    countdown_timer.set_timer()
+  }
 })
-
-

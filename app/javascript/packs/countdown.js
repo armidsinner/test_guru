@@ -1,29 +1,29 @@
 export class Timer{
 timeLeft
+
+  constructor(timer) {
+    this.timer = timer
+  }
   set_timer (){
-    const timer = document.getElementById('timer')
-    if (timer) {
-      this.timeLeft = timer.dataset.timer * 60
-      const url = timer.dataset.url
-      console.log('1')
-      setInterval(()=>this.interval_ongoing(url, timer), 1000)
-    }
+      this.timeLeft = this.timer.dataset.timer * 60
+      const url = this.timer.dataset.url
+      setInterval(()=>this.interval_ongoing(url), 1000)
   }
 
-  interval_ongoing(url, timer){
+  interval_ongoing(url) {
     if (this.timeLeft <= 0 ){
      window.location.href = url
     }
     this.timeLeft--
-    this.change_timer(timer)
+    this.change_timer()
   }
 
-  change_timer(timer) {
+  change_timer() {
     let minutes = Math.floor(this.timeLeft / 60)
     let seconds = this.timeLeft % 60 
     if (seconds < 10){
       seconds = '0' +  this.timeLeft % 60 
     } 
-    timer.innerHTML = `Время до окончания теста: ${minutes}:${seconds}`
+    this.timer.innerHTML = `Время до окончания теста: ${minutes}:${seconds}`
   }
 }
