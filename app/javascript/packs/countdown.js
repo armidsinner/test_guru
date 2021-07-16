@@ -1,13 +1,13 @@
 export class Timer{
 timeLeft
-
   constructor(timer) {
     this.timer = timer
   }
+  
   set_timer (){
-      this.timeLeft = this.timer.dataset.timer * 60
-      const url = this.timer.dataset.url
-      setInterval(()=>this.interval_ongoing(url), 1000)
+    this.timeLeft = this.timer.dataset.timer * 60
+    const url = this.timer.dataset.url
+    setInterval(()=>this.interval_ongoing(url), 1000)
   }
 
   interval_ongoing(url) {
