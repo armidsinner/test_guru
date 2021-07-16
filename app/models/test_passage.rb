@@ -11,6 +11,14 @@ class TestPassage < ApplicationRecord
     current_question.nil?
   end
 
+  def time_left(test_passage)
+    test_passage.test.time - (Time.now - test_passage.created_at).to_i if test_passage.test.time > 0
+  end
+
+  def test_is_over?(test_passage)
+   test_passage.time_left(test_passage) <= 0
+  end
+
   def accept!(answers_ids)
     if correct_answer?(answers_ids)
       self.correct_questions += 1
@@ -27,8 +35,12 @@ class TestPassage < ApplicationRecord
   end
 
   def percent_of_correct_answers
-    correct_answers.count.to_f * 100 / test.questions.count.round(1)
+    (correct_answers.count.to_f * 100 / test.questions.count).round(1)
   end
+
+  def progress_percent 
+    (current_question_position.to_f * 100 / test.questions.count).round(1).to_s + '%'
+  end 
 
   private
 
