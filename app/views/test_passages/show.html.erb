@@ -6,7 +6,7 @@
                   "Время до окончания теста: #{ @test_passage.time_left(@test_passage) }",
                   id: 'timer',
                   data: { timer: @test_passage.time_left(@test_passage), 
-                          url: result_test_passage_path(@test_passage),} %>
+                          url: result_test_passage_path(@test_passage),} %>                        
 
 <div class="progress">
   <div class="progress-bar" id="progress-bar" data-progress="<%= @test_passage.progress_percent %>"
