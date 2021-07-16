@@ -7,14 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 users = User.create!([{ first_name: 'David', last_name: 'White', email: 'david@gmail.com', password: 'david55', type: 'Admin' },
-                      { first_name: 'Erick', last_name: 'White', email: 'erick@gmail.com', password: 'erick55', type: 'User'},
+                      { first_name: 'Erick', last_name: 'White', email: 'erick@gmail.com', password: 'erick55', type: 'User' },
                       { first_name: 'John', last_name: 'White', email: 'john@gmail.com', password: 'john55', type: 'User' }])
 
 categories = Category.create!([{ title: 'Math' }, { title: 'Biology' }, { title: 'Chemistry' }])
 
-tests = Test.create!([{ title: 'Linear Algebra', level: 2, author: users[0], category: categories[0] },
-                      { title: 'Biochemistry', level: 1, author: users[1], category: categories[2] },
-                      { title: 'Molecular Biology', level: 1, author: users[1], category: categories[1] }])
+tests = Test.create!([{ title: 'Linear Algebra', level: 2, author: users[0], category: categories[0], time: 20},
+                      { title: 'Biochemistry', level: 1, author: users[1], category: categories[2], time: 30},
+                      { title: 'Molecular Biology', level: 1, author: users[1], category: categories[1], time: 50 }])
 
 questions = Question.create!([{ title: 'Equals', test: tests[0] },
                               { title: 'Zitoplazma', test: tests[2] },
