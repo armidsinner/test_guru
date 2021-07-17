@@ -7,12 +7,12 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_first_question, on: %i[create update]
 
-  def completed?(test_passage)
-    current_question.nil? || test_passage.time_left(test_passage) <= 0
+  def completed?
+    current_question.nil? || self.time_left <= 0
   end
 
-  def time_left(test_passage)
-    test_passage.test.time - (Time.now - test_passage.created_at).to_i if test_passage.test.time > 0
+  def time_left
+    self.test.time - (Time.now - self.created_at).to_i if self.test.time > 0
   end
 
   def accept!(answers_ids)
@@ -57,6 +57,6 @@ class TestPassage < ApplicationRecord
   end
 
   def correct_answers
-    current_question.answers.correct
+    self.current_question.answers.correct
   end
 end
