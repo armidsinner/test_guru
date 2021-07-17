@@ -6,11 +6,10 @@ timeLeft
 
   set_timer() {
     this.timeLeft = this.timer.dataset.timer * 60
-    const url = this.timer.dataset.url
-    setInterval(()=>this.interval_ongoing(url), 1000)
+    setInterval(()=>this.interval_ongoing(), 1000)
   }
 
-  interval_ongoing(url) {
+  interval_ongoing() {
     if (this.timeLeft <= 0 ){
       document.querySelector('form').submit()
     }
