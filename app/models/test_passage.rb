@@ -7,16 +7,12 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_first_question, on: %i[create update]
 
-  def completed?
-    current_question.nil?
+  def completed?(test_passage)
+    current_question.nil? || test_passage.time_left(test_passage) <= 0
   end
 
   def time_left(test_passage)
     test_passage.test.time - (Time.now - test_passage.created_at).to_i if test_passage.test.time > 0
-  end
-
-  def test_is_over?(test_passage)
-   test_passage.time_left(test_passage) <= 0
   end
 
   def accept!(answers_ids)
