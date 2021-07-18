@@ -11,11 +11,11 @@ import {Sorting} from './sorting.js'
 import {CheckConfirmation} from './check_confirmation.js'
 import {EditTitle} from './form_inline.js'
 import {ProgressBar} from './progress_bar.js'
+import {Timer} from './countdown.js'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
 
 const sorted_table = new Sorting('table', "sort-by-title")
 const bar = new ProgressBar()
@@ -27,6 +27,9 @@ document.addEventListener('turbolinks:load', function() {
   edit_title.edit_title()
   sorted_table.sort_table()
   bar.add_progress_bar()
+  const timer = document.getElementById('timer')
+  if (timer) {
+    const countdown_timer = new Timer(timer)
+    countdown_timer.set_timer()
+  }
 })
-
-
