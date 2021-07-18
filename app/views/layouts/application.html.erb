@@ -16,7 +16,6 @@
       <p class='nav user'>Добро пожаловать, <b><%= current_user.first_name %></b> Гуру </p>
       <p class="nav user"><%= link_to 'Выйти', destroy_user_session_path, method: :delete, data: {confirm: 'Вы уверены?'}%></p>
       <p class="nav user"><%= link_to 'TestGuru', root_path %></p>
-      <p class="nav user"><%= link_to 'Бейджи', badges_path %></p>
     <% else %>
       <p class="nav user"><%= link_to 'TestGuru', root_path%></p>
       <p class="nav user"><%= link_to "Войти", new_user_session_path %></p>
