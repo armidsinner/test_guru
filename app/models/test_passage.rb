@@ -6,9 +6,18 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, class_name: 'Question'
 
   before_validation :before_validation_set_first_question, on: %i[create update]
+  before_save :before_save_set_complete
+
+  scope :by_category_id, -> (category_id) { joins(:test).where(tests: { category_id: category_id }) }
+  scope :by_level, -> (level) { joins(:test).where(tests: { level: level }) }
+  scope :no_repeat, -> { select(:test_id).uniq }
 
   def completed?
-    current_question.nil?
+    current_question.nil? || self.time_left <= 0
+  end
+
+  def time_left
+    self.test.time - (Time.now - self.created_at).to_i if self.test.time > 0
   end
 
   def accept!(answers_ids)
@@ -27,8 +36,12 @@ class TestPassage < ApplicationRecord
   end
 
   def percent_of_correct_answers
-    correct_answers.count.to_f * 100 / test.questions.count.round(1)
+    (correct_answers.count.to_f * 100 / test.questions.count).round(1)
   end
+
+  def progress_percent 
+    (current_question_position.to_f * 100 / test.questions.count).round(1).to_s + '%'
+  end 
 
   private
 
@@ -49,6 +62,10 @@ class TestPassage < ApplicationRecord
   end
 
   def correct_answers
-    current_question.answers.correct
+    self.current_question.answers.correct
+  end
+
+  def before_save_set_complete
+    self.success = test_passed?
   end
 end

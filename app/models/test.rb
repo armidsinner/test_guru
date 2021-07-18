@@ -13,6 +13,8 @@ class Test < ActiveRecord::Base
   scope :medium, -> { where(level: 2..4) } 
   scope :hard, -> { where(level: 5..Float::INFINITY) }
   scope :tests_with_category, ->(needed_category) { joins(:category).where(categories: { title: needed_category }).order(title: :desc) }
+  scope :by_level, -> (level) { where(level: level) }
+  scope :by_category_id, -> (category_id) { where(category_id: category_id) }
 
   def self.tests_with_category_array
     tests_with_category.pluck(:title)

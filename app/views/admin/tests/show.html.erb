@@ -18,6 +18,12 @@
   <%= render @test.questions %>
 </table>
 <br>
+
+<p> 
+  <strong>Время выполнения:</strong>
+  <%= @test.time %> минут
+</p>
+
 <p>
   <%= link_to 'Создать вопрос', new_admin_test_question_path(@test) %>
 </p>

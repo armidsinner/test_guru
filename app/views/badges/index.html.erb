@@ -1,0 +1,13 @@
+<h1>Бейджи</h1>
+
+<h2>Полученные бейджи</h2>
+
+  <table>
+    <%= render current_user.badges %>
+  </table>
+
+<h3>Доступные бейджи</h3>
+
+  <table>
+    <%= render @badges %>
+  </table>

@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :tests, through: :test_passages
   has_many :authored_tests, foreign_key: :author_id, class_name: 'Test'
   has_many :gists, dependent: :destroy
+  has_and_belongs_to_many :badges
+
   
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -27,5 +29,9 @@ class User < ActiveRecord::Base
 
   def test_passage(test)
     test_passages.find_by(test_id: test.id)
+  end
+
+  def not_having?(badge)
+    self.badges.find_by(id: badge.id).nil?
   end
 end
