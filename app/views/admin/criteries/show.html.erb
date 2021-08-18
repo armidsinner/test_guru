@@ -1,0 +1,10 @@
+<p>
+  <strong>Критерий</strong>
+  <%= @critery.title %>
+</p>
+
+<%= link_to 'Редактировать критерий', edit_admin_critery_path(@critery) %> |
+<%= link_to 'Назад', admin_projects_path %> | 
+<%= link_to 'Удалить', admin_critery_path(@critery),
+                       method: :delete,
+                       data: {confirm: 'Вы уверены?'} %>

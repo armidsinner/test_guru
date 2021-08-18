@@ -1,0 +1,47 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/projects":
+    get:
+      summary: Retrieves all projects
+      tags:
+      - Projects
+      responses:
+        '404':
+          description: project not found
+        '406':
+          description: unsupported accept header
+  "/search?q=":
+    get:
+      summary: Search for projects
+      tags:
+      - Projects
+      parameters: []
+      responses:
+        '406':
+          description: unsupported accept header
+  "/blogs/{id}":
+    get:
+      summary: Retrieves a blog
+      tags:
+      - Blogs
+      - Another Tag
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '404':
+          description: blog not found
+        '406':
+          description: unsupported accept header
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

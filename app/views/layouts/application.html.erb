@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TestGuru</title>
+    <title>MigoInvestSheet</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +12,20 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <p class="nav user"><%= button_to 'Выйти', destroy_user_session_path, method: :delete, data: {confirm: 'Вы уверены?'}%></p>
+    <% else %>
+      <% if request.original_url != 'http://localhost:3000/users/login' %>
+        <p class="nav user"><%= button_to "Войти", new_user_session_path %></p>
+      <% end %>
+    <% end %>
+    <form action="/search">
+      <input name="q" type="text" placeholder="Search" aria-label="Search">
+      <button type="submit">Search</button>
+    </form>
+
+
     <%= yield %>
+
   </body>
 </html>

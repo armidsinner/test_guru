@@ -1,0 +1,50 @@
+<p>
+  <strong>Проект</strong>
+  <%= @project.title %>
+</p>
+
+<p>
+  <strong>Описание:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Степень надежности:</strong>
+  <%= @project.reliability %>
+</p>
+
+<p>
+  <strong>Комментарий:</strong>
+  <%= @project.comment %>
+</p>
+
+<p>
+  <strong>Требуемая сумма:</strong>
+  <%= @project.money_needed %>
+</p>
+
+<p>
+  <strong>Текущая сумма:</strong>
+  <%= @project.money %>
+</p>
+
+<p>
+  <strong>Процент заполнения:</strong>
+  <%= @project.success_percent %>
+</p>
+
+
+  <h2>Критерии надежности проекта:</h2>
+  <table>
+    <% if @project.criteries_projects != nil %>
+      <%= render @project.criteries_projects %>
+    <% end %>
+  </table>
+  <br>
+
+
+<%= link_to 'Редактировать Проект', edit_admin_project_path(@project) %> |
+<%= link_to 'Назад', admin_projects_path %> | 
+<%= link_to 'Удалить', admin_project_path(@project),
+                       method: :delete,
+                       data: {confirm: 'Вы уверены?'} %>

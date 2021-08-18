@@ -1,0 +1,14 @@
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "Регистрация", new_registration_path(resource_name) %><br />
+<% end %>
+
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />
+  <% end %>
+<% end %>
+
+<% if request.original_url != 'http://localhost:3000' %>
+  <%= link_to 'На главную страницу', root_path%>
+<% end %>

@@ -1,2 +1,12 @@
 ru:
   hello: "Hello world"
+
+  services:
+    gist_question_service:
+      desc: "Вопрос теста %{title}"
+
+      
+
+ru:
+  devise:
+  sessions.user.already_signed_out: 'Возвращайтесь снова'

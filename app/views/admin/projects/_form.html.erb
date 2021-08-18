@@ -1,0 +1,60 @@
+<%= form_with model: [:admin, @project], local: true do |form| %>
+  <%= render 'shared/errors', resource: @project %>
+
+  <p>
+    <%= form.label :title, 'Название' %><br>
+    <%= form.text_field :title, value: @project.title %>
+  </p>
+
+  <p>
+    <%= form.label :author, 'Автор' %><br>
+    <%= form.text_field :author, value: @project.author %>
+  </p>
+
+   <p>
+    <%= form.label :author_information, 'Информация об авторе' %><br>
+    <%= form.text_area :author_information, value: @project.author_information, rows: 7, cols: 60 %>
+  </p>
+
+  <p>
+    <%= form.label :image, 'Аватар автора' %><br>
+    <%= form.text_field :image, value: @project.image %>
+  </p>
+
+  <p>
+    <%= form.label :description, 'Описание' %><br>
+    <%= form.text_area :description, value: @project.description, rows: 7, cols: 60 %>
+  </p>
+
+  <p>
+    <%= form.label :reliability %>
+    <%= form.select(:reliability, ['Очень рискованнно',
+                                   'Рискованно',
+                                   'Малорискованно',
+                                   'Надежно',
+                                   'Не определено'],
+                    prompt: true) %>
+  </p>
+
+  <p>
+    <%= form.label :comment, 'Комментарий' %><br>
+    <%= form.text_area :comment, value: @project.comment, rows: 7, cols: 60 %>
+  </p>
+
+  <p>
+    <%= form.label :money_needed, 'Требуемая сумма' %><br>
+    <%= form.text_field :money_needed, value: @project.money_needed %>
+  </p>
+
+  <p>
+    <%= form.label :money, 'Текущая сумма' %><br>
+    <%= form.text_field :money, value: @project.money%>
+  </p>
+
+  <p>
+    <%= form.label :critery_ids, 'Критерии надежности' %>
+    <%= form.collection_check_boxes :critery_ids, Critery.all, :id, :title %>
+  </p>
+
+  <p><%= form.submit 'Сохранить' %></p>
+<% end %>

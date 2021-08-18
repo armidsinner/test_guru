@@ -1,0 +1,15 @@
+<%= form_with model: [:admin, @criteries_project], local: true do |form| %>
+  <%= render 'shared/errors', resource: @criteries_project %>
+
+  <p>
+    <%= form.label :reliability_percent, 'Процентный показатель надежности' %><br>
+    <%= form.text_field :reliability_percent, value: @criteries_project.reliability_percent %>
+  </p>
+
+  <p>
+    <%= form.label :reliability_b, 'Булевый показатель надежности' %>
+    <%= form.check_box :reliability_b, id: :reliability_b %>
+  </p>
+
+  <p><%= form.submit 'Сохранить' %></p>
+<% end %>

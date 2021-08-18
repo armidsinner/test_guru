@@ -1,9 +1,24 @@
+require 'digest/sha1'
+
 class User < ActiveRecord::Base
-  has_many :tests_users, dependent: :destroy
-  has_many :tests, through: :tests_users, dependent: :destroy
-  has_many :tests, foreign_key: :author_id, class_name: 'Test'
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, 
+         :registerable,
+         :recoverable, 
+         :rememberable, 
+         :validatable,
+         :confirmable,
+         :trackable
 
-  validates :name, :email, presence: true
+  has_many :projects
 
-  scope :tests_used_to_solve, ->(needed_level) { joins(:tests_users).where(tests_users: { user_id: id }).where(tests: { level: needed_level }) }
+  validates :first_name, presence: { message: 'поле не может быть пустым' }
+  validates :last_name, presence: { message: 'поле не может быть пустым' }
+  validates :email, uniqueness: true, 
+                                    format: { with: URI::MailTo::EMAIL_REGEXP,
+                                              message: 'Неверный формат. 
+                                              Формат почты должен соответствовать: name@post.com' }
+                                   
+
 end

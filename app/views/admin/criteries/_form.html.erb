@@ -1,0 +1,10 @@
+<%= form_with model: [:admin, @critery], local: true do |form| %>
+  <%= render 'shared/errors', resource: @critery %>
+
+  <p>
+    <%= form.label :title, 'Название' %><br>
+    <%= form.text_field :title, value: @critery.title %>
+  </p>
+
+  <p><%= form.submit 'Сохранить' %></p>
+<% end %>

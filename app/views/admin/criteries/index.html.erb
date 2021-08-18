@@ -1,0 +1,21 @@
+<h1>Критерии надежности</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @criteries %>
+  </tbody>
+<table>
+
+<p>
+  <%= link_to 'Создать критерий надежности', new_admin_critery_path(@critery) %> 
+</p>  
+
+<p>
+  <%= link_to 'На страницу с проектами', admin_projects_path %>
+</p>
+
